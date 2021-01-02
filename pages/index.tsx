@@ -1,13 +1,12 @@
 import dynamic from 'next/dynamic'
-import { Fragment } from 'react'
 
-const Example = dynamic(() => import('./example'), {
-  ssr: false
+const BikeShed = dynamic(() => import('../components/BikeShed'), {
+  ssr: false,
 })
 
 const HomePage = () => (
   <div style={{ height: '100vh', background: 'DarkSlateBlue' }}>
-    <Example />
+    <BikeShed />
   </div>
 )
 

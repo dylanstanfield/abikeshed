@@ -2,17 +2,20 @@ import { Fragment, useRef } from 'react'
 import { Canvas } from 'react-three-fiber'
 import { Box, OrthographicCamera, OrbitControls } from '@react-three/drei'
 
+import { Base } from './units/Base'
 import { Frame } from './units/Frame'
 import { SouthWall } from './units/SouthWall'
 import { EastWall } from './units/EastWall'
 import { NorthWall } from './units/NorthWall'
 import { WestWall } from './units/WestWall'
 import { Floor } from './units/Floor'
+import { Roof } from './units/Roof'
 
 const Shed = () => (
-  <group position={ [0, 0, 0] }>
+  <group>
     <Frame />
     <Floor />
+    <Roof />
     <SouthWall />
     <EastWall />
     <NorthWall />
@@ -31,9 +34,7 @@ const Scene = () => (
       shadow-mapSize-height={2048}
       castShadow
     />
-    <Box scale={ [8, 0.5, 6] } position={ [0, -0.75, 0] } castShadow receiveShadow>
-      <meshLambertMaterial color='#3b752b' />
-    </Box>
+    <Base />
     <Shed />
   </Fragment>
 )

@@ -7,10 +7,11 @@ interface BoardProps {
   rotation?: Euler;
   color: Color; 
   wireframe?: boolean;
+  dontReceiveShadow?: boolean;
 }
 
-export const Board: React.FC<BoardProps> = ({ scale, position, rotation, color, wireframe }) => (
-  <Box scale={scale} position={position} rotation={rotation} castShadow receiveShadow>
+export const Board: React.FC<BoardProps> = ({ scale, position, rotation, color, wireframe, dontReceiveShadow }) => (
+  <Box scale={scale} position={position} rotation={rotation} castShadow receiveShadow={ !dontReceiveShadow }>
     <meshLambertMaterial color={color} wireframe={wireframe} />
   </Box>
 )

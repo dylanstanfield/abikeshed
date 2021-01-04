@@ -1,12 +1,12 @@
 import dynamic from 'next/dynamic'
 
-const Scene = dynamic(() => import('../components/Scene'), {
+const BikeShed = dynamic(() => import('../components_old/BikeShed'), {
   ssr: false,
 })
 
 const HomePage = () => (
   <div style={{ height: '100vh', background: 'DarkSlateBlue' }}>
-    <Scene />
+    <BikeShed />
   </div>
 )
 

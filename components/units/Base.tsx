@@ -1,7 +1,5 @@
-import { Box } from '@react-three/drei'
+import { Box } from '../utils/Box'
 
 export const Base = () => (
-  <Box scale={ [8, 0.5, 6] } position={ [0, -0.75, 0] } castShadow receiveShadow>
-    <meshLambertMaterial color='#3b752b' />
-  </Box>
+  <Box height={ 0.5 } width={ 10 } depth={ 10 } color={ 'green' } />
 )

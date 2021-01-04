@@ -12,6 +12,6 @@ interface BoardProps {
 
 export const Board: React.FC<BoardProps> = ({ scale, position, rotation, color, wireframe, dontReceiveShadow }) => (
   <Box scale={scale} position={position} rotation={rotation} castShadow receiveShadow={ !dontReceiveShadow }>
-    <meshLambertMaterial color={color} wireframe={wireframe} />
+    <meshPhongMaterial color={color} wireframe={wireframe} />
   </Box>
 )

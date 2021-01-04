@@ -1,30 +1,68 @@
-import { Board } from '../parts/Board'
-import { colors } from '../colors'
+import { Box } from '../utils/Box'
+import { Position } from '../utils/Position'
+
+const color = '#4d4839'
 
 export const Frame = () => (
   <group>
     {/* Floor */}
-    <Board scale={ [6, 0.4, 0.4] } position={ [0, -0.3, -1.8] } color={ colors.frame } /> {/* North */}
-    <Board scale={ [6, 0.4, 0.4] } position={ [0, -0.3, 1.8] } color={ colors.frame } /> {/* South */}
-    <Board scale={ [0.4, 0.4, 4] } position={ [-2.8, -0.3, 0] } color={ colors.frame } /> {/* West */}
+
+    <Position z={ 1.75 }>
+      <Box height={ 0.5 } width={ 6 } depth={ 0.5 } color={ color } />
+    </Position>
+    <Position z={ -1.75 }>
+      <Box height={ 0.5 } width={ 6 } depth={ 0.5 } color={ color } />
+    </Position>
+    <Position x={ -2.75 } rotate={{ y: 90 }}>
+      <Box height={ 0.5 } width={ 4 } depth={ 0.5 } color={ color } />
+    </Position>
 
     {/* Door */}
-    <Board scale={ [0.4, 0.4, 1] } position={ [2.8, -0.3, 1.1] } color={ colors.frame } />
-    <Board scale={ [0.4, 0.4, 1] } position={ [2.8, -0.3, -1.1] } color={ colors.frame } />
-    <Board scale={ [0.4, 2.2, 0.4] } position={ [2.8, 0.6, 0.75] } color={ colors.frame } />
-    <Board scale={ [0.4, 2.2, 0.4] } position={ [2.8, 0.6, -0.75] } color={ colors.frame } />
-    <Board scale={ [0.4, 0.4, 1.9] } position={ [2.8, 1.75, 0] } color={ colors.frame } />
 
-    {/* Posts */}
-    <Board scale={ [0.4, 3, 0.4] } position={ [2.8, 1, 1.8] } color={ colors.frame } /> {/* Southeast */}
-    <Board scale={ [0.4, 3, 0.4] } position={ [-2.8, 1, 1.8] } color={ colors.frame } /> {/* Southwest */}
-    <Board scale={ [0.4, 4, 0.4] } position={ [2.8, 1.5, -1.8] } color={ colors.frame } /> {/* Northeast */}
-    <Board scale={ [0.4, 4, 0.4] } position={ [-2.8, 1.5, -1.8] } color={ colors.frame } /> {/* Northwest */}
+    <Position x={ 2.75 } z={ -1.25 } rotate={{ y: 90 }}>
+      <Box height={ 0.5 } width={ 1.5 } depth={ 0.5 } color={ color } />
+    </Position>
+    <Position x={ 2.75 } z={ 1.25 } rotate={{ y: 90 }}>
+      <Box height={ 0.5 } width={ 1.5 } depth={ 0.5 } color={ color } />
+    </Position>
+    <Position x={ 2.75 } y={ 1 } z={ 0.75 } >
+      <Box height={ 2.5 } width={ 0.5 } depth={ 0.5 } color={ color } />
+    </Position>
+    <Position x={ 2.75 } y={ 1 } z={ -0.75 } >
+      <Box height={ 2.5 } width={ 0.5 } depth={ 0.5 } color={ color } />
+    </Position>
+    <Position x={ 2.75 } y={ 2 } rotate={{ y: 90 }}>
+      <Box height={ 0.5 } width={ 2 } depth={ 0.5 } color={ color } />
+    </Position>
+
+    {/* Walls */}
+
+    <Position x={ -2.75 } y={ 1.25 } z={ 1.75 } >
+      <Box height={ 3 } width={ 0.5 } depth={ 0.5 } color={ color } />
+    </Position>
+    <Position x={ 2.75 } y={ 1.25 } z={ 1.75 } >
+      <Box height={ 3 } width={ 0.5 } depth={ 0.5 } color={ color } />
+    </Position>
+    <Position x={ 2.75 } y={ 1.75 } z={ -1.75 } >
+      <Box height={ 4 } width={ 0.5 } depth={ 0.5 } color={ color } />
+    </Position>
+    <Position x={ -2.75 } y={ 1.75 } z={ -1.75 } >
+      <Box height={ 4 } width={ 0.5 } depth={ 0.5 } color={ color } />
+    </Position>
 
     {/* Ceiling */}
-    <Board scale={ [6, 0.4, 0.4] } position={ [-0, 3.3, -1.8] } color={ colors.frame } /> {/* North */}
-    <Board scale={ [6, 0.4, 0.4] } position={ [-0, 2.3, 1.8] } color={ colors.frame } /> {/* South */}
-    <Board scale={ [0.4, 0.4, 5] } position={ [-2.8, 2.9, 0] } rotation={ [0.27, 0, 0] } color={ colors.frame } /> {/* West */}
-    <Board scale={ [0.4, 0.4, 5] } position={ [2.8, 2.9, 0] } rotation={ [0.27, 0, 0] } color={ colors.frame } /> {/* East */}
+
+    <Position z={ 1.75 } y={ 2.5 }>
+      <Box height={ 0.5 } width={ 6 } depth={ 0.5 } color={ color } />
+    </Position>
+    <Position z={ -1.75 } y={ 3.5 }>
+      <Box height={ 0.5 } width={ 6 } depth={ 0.5 } color={ color } />
+    </Position>
+    <Position x={ 2.75 } y={ 3.25 } rotate={{ y: 90, z: 15 }}>
+      <Box height={ 0.5 } width={ Math.sqrt(1 + (4 * 4)) + 1 } depth={ 0.5 } color={ color } />
+    </Position>
+    <Position x={ -2.75 } y={ 3.25 } rotate={{ y: 90, z: 15 }}>
+      <Box height={ 0.5 } width={ Math.sqrt(1 + (4 * 4)) + 1 } depth={ 0.5 } color={ color } />
+    </Position>
   </group>
 )

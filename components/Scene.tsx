@@ -6,6 +6,7 @@ import { Position } from './utils/Position'
 import { Base } from './units/Base'
 import { Frame } from './units/Frame'
 import { Walls } from './units/Walls'
+import { Roof } from './units/Roof'
 
 export default () => {
   const cam = useRef()
@@ -17,14 +18,14 @@ export default () => {
       <ambientLight />
       <spotLight
         intensity={ 0.6 }
-        position={ [25, 100, 50] }
-        penumbra={ 1 }
+        position={ [5, 10, 10] }
+        penumbra={ 0 }
         shadow-mapSize-width={ 2048 }
         shadow-mapSize-height={ 2048 }
         castShadow
       />
       <group>
-        <Position y={ -0.5 }>
+        <Position y={ -0.6 }>
           <Base />
         </Position>
         <Position>
@@ -32,6 +33,9 @@ export default () => {
         </Position>
         <Position>
           <Walls />
+        </Position>
+        <Position y={ 3.25 } rotate={{ x: 15 }}>
+          <Roof />
         </Position>
       </group>
     </Canvas>

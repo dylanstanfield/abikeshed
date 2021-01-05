@@ -6,10 +6,11 @@ interface BoxProps {
   width?: number;
   depth?: number;
   color?: Color;
+  material?: JSX.Element;
 }
 
-export const Box: React.FC<BoxProps> = ({ height, width, depth, color }) => (
+export const Box: React.FC<BoxProps> = ({ height, width, depth, color, material }) => (
   <DreiBox scale={ [width ?? 1, height ?? 1, depth ?? 1] } castShadow receiveShadow>
-    <meshPhongMaterial color={ color ?? 'red' } />
+    { material ?? <meshStandardMaterial color={ color ?? 'red' } metalness={ 0.25 } roughness={ 0.75 } /> }
   </DreiBox>
 )

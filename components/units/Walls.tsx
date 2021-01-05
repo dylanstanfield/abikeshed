@@ -1,33 +1,108 @@
 import { Box } from "../utils/Box";
 import { Position } from "../utils/Position";
 
-const Slat: React.FC<{ width: number }> = ({ width }) => (
-  <group>
-    <Position y={ 0.05 }>
-      <Box width={ width } depth={ 0.05 } height={ 0.4 } color={ '#635732' } />
-    </Position>
-    <Position y={ -0.05 } z={ -0.05 }>
-      <Box width={ width } depth={ 0.05 } height={ 0.4 } color={ '#5c512f' } />
-    </Position>
-  </group>
-)
+const range = (length: number) => [...(new Array(length)).keys()]
+
+const Slat: React.FC<{ width: number }> = ({ width }) => {
+  const facadeColor = '#635732'
+  const interiorColor = '#5c512f'
+
+  return (
+    <group>
+      <Position y={ 0.05 }>
+        <Box width={ width } depth={ 0.05 } height={ 0.4 } color={ facadeColor } />
+      </Position>
+      <Position y={ -0.05 } z={ -0.05 }>
+        <Box width={ width } depth={ 0.05 } height={ 0.4 } color={ interiorColor } />
+      </Position>
+    </group>
+  )
+}
+
+const Window = () => {
+  const sillColor = '#4d4437'
+  const glassColor = '#2194ce'
+  const dividerColor = '#404040'
+
+  return (
+    <group>
+      <Box height={ 0.1 } width={ 1.375 } depth={ 0.2 } color={ sillColor } />
+      <Position x={ 0.6375 } y={ 0.45 }>
+        <Box height={ 1 } width={ 0.1 } depth={ 0.2 } color={ sillColor } />
+      </Position>
+      <Position x={ -0.6375 } y={ 0.45 }>
+        <Box height={ 1 } width={ 0.1 } depth={ 0.2 } color={ sillColor } />
+      </Position>
+      <Position y={ 0.9 }>
+        <Box height={ 0.1 } width={ 1.375 } depth={ 0.2 } color={ sillColor } />
+      </Position>
+      <Position y={ 0.45 }>
+        <Box height={ 0.05 } width={ 1.175 } depth={ 0.1 } color={ dividerColor } />
+      </Position>
+      <Position y={ 0.45 }>
+        <Box height={ 0.8 } width={ 0.05 } depth={ 0.1 } color={ dividerColor } />
+      </Position>
+
+      <Position y={ 0.45 }>
+        <Box
+          height={ 0.85 }
+          width={ 1.275 }
+          depth={ 0.05 }
+          material={(
+          <meshStandardMaterial
+            color={ glassColor }
+            metalness={ 0 }
+            roughness={ 0 }
+            transparent
+            opacity={ 0.4 } />
+          )} />
+      </Position>
+    </group>
+  )
+}
 
 export const Walls = () => (
   <group>
     {/* South */}
 
     <Position y={ 0.5 } z={ 1.75 }>
-      { [...(new Array(4)).keys()].map((i) => (
-        <Position y={ 0.5 * i }>
-          <Slat width={ 5 } />
-        </Position>
-      )) }
+      <Position>
+        <Slat width={ 5 } />
+      </Position>
+      <Position y={ 1.5 }>
+        <Slat width={ 5 } />
+      </Position>
+      <Position y={ 0.5 }>
+        <Slat width={ 0.75 } />
+      </Position>
+      <Position y={ 1 }>
+        <Slat width={ 0.75 } />
+      </Position>
+      <Position y={ 0.5 } x={ 2.125 }>
+        <Slat width={ 0.75 } />
+      </Position>
+      <Position y={ 1 } x={ 2.125 }>
+        <Slat width={ 0.75 } />
+      </Position>
+      <Position y={ 0.5 } x={ -2.125 }>
+        <Slat width={ 0.75 } />
+      </Position>
+      <Position y={ 1 } x={ -2.125 }>
+        <Slat width={ 0.75 } />
+      </Position>
+
+      <Position x={ 1.0625 } y={ 0.3 }>
+        <Window />
+      </Position>
+      <Position x={ -1.0625 } y={ 0.3 }>
+        <Window />
+      </Position>
     </Position>
 
     {/* North */}
 
     <Position y={ 0.5 } z={ -1.75 } rotate={{ y: 180 }}>
-      { [...(new Array(6)).keys()].map((i) => (
+      { range(6).map((i) => (
         <Position y={ 0.5 * i }>
           <Slat width={ 5 } />
         </Position>
@@ -37,43 +112,65 @@ export const Walls = () => (
     {/* East */}
 
     <Position x={ 2.8 } y={ 0.5 } z={ 1.25 } rotate={{ y: 90 }}>
-      { [...(new Array(4)).keys()].map((i) => (
-        <Position y={ 0.5 * i }>
-          <Slat width={ 0.5 } />
-        </Position>
-      )) }
-    </Position>
-    <Position x={ 2.8 } y={ 0.5 } z={ -1.25 } rotate={{ y: 90 }}>
-      { [...(new Array(4)).keys()].map((i) => (
-        <Position y={ 0.5 * i }>
-          <Slat width={ 0.5 } />
-        </Position>
-      )) }
-    </Position>
-    <Position x={ 2.8 } y={ 2.5 } rotate={{ y: 90 }}>
-      <Slat width={ 3 } />
-    </Position>
-    <Position x={ 2.8 } y={ 3 }  z={ -0.3 } rotate={{ y: 90 }}>
-      <Slat width={ 2.5 } />
-    </Position>
-    <Position x={ 2.8 } y={ 3.5 }  z={ -1.3 } rotate={{ y: 90 }}>
-      <Slat width={ 0.75 } />
+      <Position>
+        { range(4).map((i) => (
+          <Position y={ 0.5 * i }>
+            <Slat width={ 0.5 } />
+          </Position>
+        )) }
+      </Position>
+      <Position x={ 2.5 }>
+        { range(4).map((i) => (
+          <Position y={ 0.5 * i }>
+            <Slat width={ 0.5 } />
+          </Position>
+        )) }
+      </Position>
+      <Position x={ 1.25 } y={ 2 }>
+        <Slat width={ 3 } />
+      </Position>
+      <Position x={ 1.6 } y={ 2.5 }>
+        <Slat width={ 2.5 } />
+      </Position>
+      <Position x={ 2.6 } y={ 3 }>
+        <Slat width={ 0.75 } />
+      </Position>
     </Position>
 
     {/* West */}
 
     <Position x={ -2.8 } y={ 0.5 } rotate={{ y: -90 }}>
-      { [...(new Array(5)).keys()].map((i) => (
-        <Position y={ 0.5 * i }>
+      <Position>
           <Slat width={ 3 } />
-        </Position>
-      )) }
-    </Position>
-    <Position x={ -2.8 } y={ 3 }  z={ -0.3 } rotate={{ y: -90 }}>
-      <Slat width={ 2.5 } />
-    </Position>
-    <Position x={ -2.8 } y={ 3.5 }  z={ -1.3 } rotate={{ y: -90 }}>
-      <Slat width={ 0.75 } />
+      </Position>
+      <Position x={ 1.0925 } y={ 0.5 }>
+          <Slat width={ 0.8125 } />
+      </Position>
+      <Position x={ 1.0925 } y={ 1 }>
+          <Slat width={ 0.8125 } />
+      </Position>
+      <Position x={ -1.0925 } y={ 0.5 }>
+          <Slat width={ 0.8125 } />
+      </Position>
+      <Position x={ -1.0925 } y={ 1 }>
+          <Slat width={ 0.8125 } />
+      </Position>
+      <Position y={ 1.5 }>
+          <Slat width={ 3 } />
+      </Position>
+      <Position y={ 2 }>
+          <Slat width={ 3 } />
+      </Position>
+      <Position x={ -0.3 } y={ 2.5 }>
+        <Slat width={ 2.5 } />
+      </Position>
+      <Position x={ -1.3 } y={ 3 }>
+        <Slat width={ 0.75 } />
+      </Position>
+
+      <Position y={ 0.3 }>
+        <Window />
+      </Position>
     </Position>
   </group>
 )

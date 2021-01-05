@@ -1,7 +1,7 @@
 import { Box } from '../utils/Box'
 import { Position } from '../utils/Position'
 
-const color = '#4d4839'
+const color = '#4d4437'
 
 export const Frame = () => (
   <group>

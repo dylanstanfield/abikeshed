@@ -1,4 +1,5 @@
 import { Box } from "../utils/Box";
+import { Cylinder } from "../utils/Cylinder";
 import { Position } from "../utils/Position";
 
 const range = (length: number) => [...(new Array(length)).keys()]
@@ -170,6 +171,23 @@ export const Walls = () => (
 
       <Position y={ 0.3 }>
         <Window />
+      </Position>
+    </Position>
+
+    {/* Door */}
+    <Position x={ 3.3 } y={ 0.75 } z={ -0.6 } rotate={{ y: 110 }}>
+      <Box height={ 2 } width={ 0.1 } color={ '#5c512f' } />
+      <Position x={ 0 } y={ 0 } z={ 0.35 } rotate={{ z: 90 }}>
+        <Cylinder radius={ 0.05 } length={ 0.2 } color={ '#292929' } />
+      </Position>
+      <Position x={ 0.05} y={ 0 } z={ -0.5 }>
+        <Cylinder radius={ 0.025 } length={ 0.15 }color={ '#666666' } />
+      </Position>
+      <Position x={ 0.05} y={ 0.75 } z={ -0.5 }>
+        <Cylinder radius={ 0.025 } length={ 0.15 }color={ '#666666' } />
+      </Position>
+      <Position x={ 0.05} y={ -0.75 } z={ -0.5 }>
+        <Cylinder radius={ 0.025 } length={ 0.15 }color={ '#666666' } />
       </Position>
     </Position>
   </group>

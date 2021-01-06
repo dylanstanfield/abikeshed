@@ -88,7 +88,7 @@ export const Interior = () => (
     </Position>
 
     {/* Mat */}
-    <Position x={ 2 } y={ -0.225 }>
+    <Position x={ 2 } y={ -0.24 }>
       <Box height={ 0.025 } width={ 0.8 } depth={ 1.3 } color={ '#40403f' } />
     </Position>
   </group>

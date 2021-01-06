@@ -30,5 +30,13 @@ export const Roof = () => (
         </Position>
       ))}
     </Position>
+
+    {/* Light */}
+    <Position y={ -0.85 }>
+      <spotLight intensity={ 0.5 }  color={ '#fce792' } castShadow />
+    </Position>
+    <Position y={ -0.15 }>
+      <Box height={ 0.1 } width={ 2 } color={ '#fce792' } cancelShadow />
+    </Position>
   </group>
 )

@@ -1,8 +1,8 @@
 import { Torus as DreiTorus, Cylinder as DreiCylinder, RoundedBox } from '@react-three/drei'
 import { Color } from 'react-three-fiber'
-import { DoubleSide } from 'three'
 
 import { Box } from '../utils/Box'
+import { Cylinder } from '../utils/Cylinder'
 import { Position } from '../utils/Position'
 
 interface ToursProps {
@@ -20,78 +20,65 @@ const Torus: React.FC<ToursProps> = ({ radius, tube, radialSegments, tubularSegm
   </DreiTorus>
 )
 
-interface CylinderProps {
-  radius?: number;
-  length?: number;
-  segments?: number;
-  color?: Color;
-}
-
-const Cylinder: React.FC<CylinderProps> = ({ radius, length, segments, color }) => (
-  <DreiCylinder args={ [ radius ?? 1, radius ?? 1, length ?? 1, segments ?? 50] } castShadow receiveShadow>
-    <meshStandardMaterial color={ color ?? 'red' } metalness={ 0.25 } roughness={ 0.75 } />
-  </DreiCylinder>
-)
-
-const Frame = () => (
+const Frame: React.FC<{ color: Color }> = ({ color }) => (
   <group>
     {/* Bottom Bracket */}
     <Position x={ -0.065 } y={ -0.2 } rotate={{ x: 90 }}>
-      <Cylinder radius={ 0.06 } length={ 0.1 } color={ '#b5677b' } />
+      <Cylinder radius={ 0.06 } length={ 0.1 } color={ color } />
     </Position>
 
     {/* Seat Tube */}
     <Position x={ -0.15 } y={ 0.05 } rotate={{ z: 90 - 73 }}>
-      <Cylinder radius={ 0.05 } length={ 0.5 } color={ '#b5677b' } />
+      <Cylinder radius={ 0.05 } length={ 0.5 } color={ color } />
     </Position>
 
     {/* Down Tube */}
     <Position x={ 0.15 } y={ -0.015 } rotate={{ z: -50 }}>
-      <Cylinder radius={ 0.05 } length={ 0.53 } color={ '#b5677b' } />
+      <Cylinder radius={ 0.05 } length={ 0.53 } color={ color } />
     </Position>
 
     {/* Head Tube */}
     <Position x={ 0.35 } y={ 0.175 } rotate={{ z: 90 - 71 }}>
-      <Cylinder radius={ 0.05 } length={ 0.25 } color={ '#b5677b' } />
+      <Cylinder radius={ 0.05 } length={ 0.25 } color={ color } />
     </Position>
 
     {/* Top Tube */}
     <Position x={ 0.07 } y={ 0.2 } rotate={{ z: 90 }}>
-      <Cylinder radius={ 0.05 } length={ 0.53 } color={ '#b5677b' } />
+      <Cylinder radius={ 0.05 } length={ 0.53 } color={ color } />
     </Position>
 
     {/* Right Chainstay */}
     <Position x={ -0.32 } y={ -0.22 } z={ 0.095 } rotate={{ z: 90 }}>
-      <Cylinder radius={ 0.025 } length={ 0.275 } color={ '#b5677b' } />
+      <Cylinder radius={ 0.025 } length={ 0.275 } color={ color } />
     </Position>
     <Position x={ -0.15 } y={ -0.22 } z={ 0.05 } rotate={{ z: 90, y: 45 }}>
-      <Cylinder radius={ 0.025 } length={ 0.15 } color={ '#b5677b' } />
+      <Cylinder radius={ 0.025 } length={ 0.15 } color={ color } />
     </Position>
 
     {/* Left Chainstay */}
     <Position x={ -0.32 } y={ -0.22 } z={ -0.095 } rotate={{ z: 90 }}>
-      <Cylinder radius={ 0.025 } length={ 0.275 } color={ '#b5677b' } />
+      <Cylinder radius={ 0.025 } length={ 0.275 } color={ color } />
     </Position>
     <Position x={ -0.15 } y={ -0.22 } z={ -0.05 } rotate={{ z: 90, y: -45 }}>
-      <Cylinder radius={ 0.025 } length={ 0.15 } color={ '#b5677b' } />
+      <Cylinder radius={ 0.025 } length={ 0.15 } color={ color } />
     </Position>
 
     {/* Seatstays */}
     <Position x={ -0.35 } y={ 0.4 } rotate={{ z: 60 }}>
       {/* Right */}
       <Position x={ -0.385 } y={ -0.22 } z={ 0.095 } rotate={{ z: 90 }}>
-        <Cylinder radius={ 0.025 } length={ 0.4 } color={ '#b5677b' } />
+        <Cylinder radius={ 0.025 } length={ 0.4 } color={ color } />
       </Position>
       <Position x={ -0.15 } y={ -0.22 } z={ 0.05 } rotate={{ z: 90, y: 45 }}>
-        <Cylinder radius={ 0.025 } length={ 0.15 } color={ '#b5677b' } />
+        <Cylinder radius={ 0.025 } length={ 0.15 } color={ color } />
       </Position>
 
       {/* Left */}
       <Position x={ -0.385 } y={ -0.22 } z={ -0.095 } rotate={{ z: 90 }}>
-        <Cylinder radius={ 0.025 } length={ 0.4 } color={ '#b5677b' } />
+        <Cylinder radius={ 0.025 } length={ 0.4 } color={ color } />
       </Position>
       <Position x={ -0.15 } y={ -0.22 } z={ -0.05 } rotate={{ z: 90, y: -45 }}>
-        <Cylinder radius={ 0.025 } length={ 0.15 } color={ '#b5677b' } />
+        <Cylinder radius={ 0.025 } length={ 0.15 } color={ color } />
       </Position>
     </Position>
 
@@ -99,18 +86,18 @@ const Frame = () => (
     <Position x={ 0.125 } y={ 0.125 } rotate={{ z: 110 }}>
       {/* Right Chainstay */}
       <Position x={ -0.32 } y={ -0.22 } z={ 0.095 } rotate={{ z: 90 }}>
-        <Cylinder radius={ 0.025 } length={ 0.275 } color={ '#b5677b' } />
+        <Cylinder radius={ 0.025 } length={ 0.275 } color={ color } />
       </Position>
       <Position x={ -0.15 } y={ -0.22 } z={ 0.05 } rotate={{ z: 90, y: 45 }}>
-        <Cylinder radius={ 0.025 } length={ 0.15 } color={ '#b5677b' } />
+        <Cylinder radius={ 0.025 } length={ 0.15 } color={ color } />
       </Position>
 
       {/* Left Chainstay */}
       <Position x={ -0.32 } y={ -0.22 } z={ -0.095 } rotate={{ z: 90 }}>
-        <Cylinder radius={ 0.025 } length={ 0.275 } color={ '#b5677b' } />
+        <Cylinder radius={ 0.025 } length={ 0.275 } color={ color } />
       </Position>
       <Position x={ -0.15 } y={ -0.22 } z={ -0.05 } rotate={{ z: 90, y: -45 }}>
-        <Cylinder radius={ 0.025 } length={ 0.15 } color={ '#b5677b' } />
+        <Cylinder radius={ 0.025 } length={ 0.15 } color={ color } />
       </Position>
     </Position>
 
@@ -121,7 +108,7 @@ const Frame = () => (
   </group>
 )
 
-const Handlebars = () => (
+export const Handlebars = () => (
   <group>
       <Position x={ 0.085 } y={ 0 } rotate={{ x: 90 }}>
         <Cylinder radius={ 0.03 } length={ 0.25 } color={ '#292929' } />
@@ -167,7 +154,7 @@ const Handlebars = () => (
   </group>
 )
 
-const Wheel: React.FC<{ rear?: boolean }> = ({ rear }) => (
+export const Wheel: React.FC<{ rear?: boolean }> = ({ rear }) => (
   <group>
     <Torus radius={ 0.25 } tube={ 0.05 } radialSegments={ 100 } tubularSegments={ 100 } color={ '#2e2922' } />
     <Position x={ 0 } y={ 0 } rotate={{ x: 90 }}>
@@ -212,9 +199,9 @@ const Drivetrain = () => (
   </group>
 )
 
-const scale = 1.5
+const scale = 1.4
 
-export const Bike = () => (
+export const Bike: React.FC<{ color: Color }> = ({ color }) => (
   <group scale={ [scale, scale, scale] }>
     <Position x={ -0.475 } y={ -0.22 }>
       <Wheel rear />
@@ -224,7 +211,7 @@ export const Bike = () => (
     </Position>
 
     <Position x={ -0.01 } y={ 0.01 }>
-      <Frame />
+      <Frame color={ color } />
     </Position>
 
     <Position x={ -0.075 } y={ -0.19 }>

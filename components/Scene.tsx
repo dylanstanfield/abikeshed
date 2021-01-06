@@ -8,6 +8,8 @@ import { Frame } from './units/Frame'
 import { Walls } from './units/Walls'
 import { Roof } from './units/Roof'
 import { Interior } from './units/Interior'
+import { Woodpile } from './units/Woodpile'
+import { Lantern } from './units/Lantern'
 
 export default () => {
   const cam = useRef()
@@ -18,9 +20,9 @@ export default () => {
       <OrbitControls />
       <ambientLight />
       <spotLight
-        intensity={ 0.6 }
+        color={ 'white' }
+        intensity={ 0.2 }
         position={ [5, 10, 10] }
-        penumbra={ 0 }
         shadow-mapSize-width={ 2048 }
         shadow-mapSize-height={ 2048 }
         castShadow
@@ -35,6 +37,12 @@ export default () => {
           <Roof />
         </Position>
         <Interior />
+        <Position x={ -1.25 } y={ -0.1 } z={ -2.4 }>
+          <Woodpile />
+        </Position>
+        <Position x={ -2 } y={ 0 } z={ -3.2 } rotate={{ y: 40 }}>
+          <Lantern />
+        </Position>
       </group>
     </Canvas>
   )

@@ -3,7 +3,7 @@ import random from 'seedrandom';
 import { Box } from '../utils/Box'
 import { Position } from '../utils/Position'
 
-const rng = random('what', {})
+const rng = random('roof', {})
 const roofColor = '#4d4839'
 const depth = Math.sqrt(1 + (4 * 4)) + 0.8
 const range = (length: number) => [...(new Array(length)).keys()]
@@ -33,7 +33,7 @@ export const Roof = () => (
 
     {/* Light */}
     <Position y={ -0.85 }>
-      <spotLight intensity={ 0.5 }  color={ '#fce792' } castShadow />
+      <spotLight intensity={ 0.5 } color={ '#fce792' } distance={ 6 } decay={ 0.5 } castShadow />
     </Position>
     <Position y={ -0.15 }>
       <Box height={ 0.1 } width={ 2 } color={ '#fce792' } cancelShadow />

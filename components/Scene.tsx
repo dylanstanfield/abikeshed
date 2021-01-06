@@ -7,6 +7,7 @@ import { Base } from './units/Base'
 import { Frame } from './units/Frame'
 import { Walls } from './units/Walls'
 import { Roof } from './units/Roof'
+import { Bike } from './units/Bike'
 
 export default () => {
   const cam = useRef()
@@ -28,14 +29,13 @@ export default () => {
         <Position y={ -0.6 }>
           <Base />
         </Position>
-        <Position>
-          <Frame />
-        </Position>
-        <Position>
-          <Walls />
-        </Position>
+        <Frame />
+        <Walls />
         <Position y={ 3.25 } rotate={{ x: 15 }}>
           <Roof />
+        </Position>
+        <Position z={ 2.5 } y={ 0.4 }>
+          <Bike />
         </Position>
       </group>
     </Canvas>

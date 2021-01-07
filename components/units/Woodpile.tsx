@@ -13,7 +13,7 @@ const Log = () => (
 const LogLine: React.FC<{ length: number }> = ({ length }) => (
   <group>
     { range(length).map((i) => (
-      <Position x={ i * 0.51 }>
+      <Position x={ i * 0.51 } key={ i }>
         <Log />
       </Position>
     )) }

@@ -23,7 +23,7 @@ export const DoorAwning = () => (
     </Position>
     <Position y={ 0.05 } z={ -0.975 }>
       { range(15).map((i) => (
-        <Position z={ i * 0.14 }>
+        <Position z={ i * 0.14 } key={ i }>
           <Box height={ 0.025 } width={ 1.15 } depth={ 0.09 } color={ '#615530' } />
         </Position>
       )) }

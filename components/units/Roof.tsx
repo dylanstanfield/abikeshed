@@ -21,9 +21,9 @@ export const Roof = () => (
     <Box height={ 0.2 } width={ 5.9 } depth={ depth } color={ roofColor } />
     <Position y={ 0.125 } x={ -2.25 } z={ -2.25 }>
       { range(10).map((i) => (
-        <Position z={ i * 0.5 } rotate={{ x: i === 9 ? 0 : -6.25 }}>
+        <Position z={ i * 0.5 } rotate={{ x: i === 9 ? 0 : -6.25 }} key={ i }>
           { range(10).map((i) => (
-            <Position x={ i * 0.5 }>
+            <Position x={ i * 0.5 } key={ i }>
               <Shingle />
             </Position>
           )) }

@@ -104,7 +104,7 @@ export const Walls = () => (
 
     <Position y={ 0.5 } z={ -1.75 } rotate={{ y: 180 }}>
       { range(6).map((i) => (
-        <Position y={ 0.5 * i }>
+        <Position y={ 0.5 * i } key={ i }>
           <Slat width={ 5 } />
         </Position>
       )) }
@@ -115,14 +115,14 @@ export const Walls = () => (
     <Position x={ 2.8 } y={ 0.5 } z={ 1.25 } rotate={{ y: 90 }}>
       <Position>
         { range(4).map((i) => (
-          <Position y={ 0.5 * i }>
+          <Position y={ 0.5 * i } key={ i }>
             <Slat width={ 0.5 } />
           </Position>
         )) }
       </Position>
       <Position x={ 2.5 }>
         { range(4).map((i) => (
-          <Position y={ 0.5 * i }>
+          <Position y={ 0.5 * i } key={ i }>
             <Slat width={ 0.5 } />
           </Position>
         )) }

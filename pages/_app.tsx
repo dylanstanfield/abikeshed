@@ -1,10 +1,20 @@
 // import App from 'next/app'
 
+import { Fragment } from 'react'
+import Head from 'next/head'
 import '../global.css'
 
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <Fragment>
+      <Head>
+        <link rel="shortcut icon" href="/favicon.png" />
+        <title>Bike Shed</title>
+      </Head>
+      <Component {...pageProps} />
+    </Fragment>
+  )
 }
 
 // Only uncomment this method if you have blocking data requirements for

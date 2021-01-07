@@ -13,13 +13,13 @@ import { Lantern } from './units/Lantern'
 import { Barrels } from './units/Barrels'
 import { DoorAwning } from './units/DoorAwning'
 
-export default () => {
+const Scene: React.FC<{ hideRoof: boolean; signText?: string; }> = ({ hideRoof, signText }) => {
   const cam = useRef()
 
   return (
-    <Canvas shadowMap camera={{ position: [10, 10, 10] }}>
+    <Canvas shadowMap camera={{ position: signText ? [11, 2.5, 0] : [12, 12, 12] }}>
       <OrthographicCamera ref={ cam } zoom={ 10 } />
-      <OrbitControls />
+      <OrbitControls maxDistance={ 100 } />
       <ambientLight />
       <spotLight
         color={ 'white' }
@@ -34,12 +34,12 @@ export default () => {
           <Base />
         </Position>
         <Frame />
-        <Walls />
+        <Walls signText={ signText } />
         <Position x={ 3.37 } y={ 2.2 } rotate={{ z: -15 }}>
           <DoorAwning />
         </Position>
         <Position y={ 3.25 } rotate={{ x: 15 }}>
-          <Roof />
+          { !hideRoof && <Roof /> }
         </Position>
         <Interior />
         <Position x={ -1.25 } y={ -0.1 } z={ -2.4 }>
@@ -55,3 +55,5 @@ export default () => {
     </Canvas>
   )
 }
+
+export default Scene;

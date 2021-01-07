@@ -1,0 +1,69 @@
+body {
+  margin: 0;
+}
+
+.hide-roof_container {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  font-family: Nanum Brush;
+  text-align: center;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+.hide-roof {
+  display: inline-block;
+  padding: 10px 15px;
+  background: #635732;
+  position: relative;
+  color: #aba79b;
+  font-style: italic;
+  border-right: 10px solid #5c512f;
+  border-left: 10px solid #5c512f;
+}
+
+.button {
+  color: #91afc7;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.edit-sign-modal {
+  position: absolute;
+  width: calc(100% - 80px);
+  max-width: 400px;
+  height: calc(100% - 80px);
+  z-index: 2;
+  font-family: Nanum Brush;
+  text-align: center;
+  color: #aba79b;
+  background: #635732;
+  border: 10px solid #5c512f;
+  padding: 20px;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  text-align: left;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+.edit-sign-modal > h1,
+p {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.edit-sign::before {
+  content: " ";
+}
+
+@font-face {
+  font-family: Nanum Brush;
+  src: url(/fonts/NanumBrushScript-Regular.ttf);
+}

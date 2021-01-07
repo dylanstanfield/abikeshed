@@ -2,7 +2,9 @@
 
 import { Fragment } from 'react'
 import Head from 'next/head'
-import '../global.css'
+import 'url-search-params-polyfill'
+
+import '../styles/global.css'
 
 
 function MyApp({ Component, pageProps }) {
@@ -11,6 +13,7 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <link rel="shortcut icon" href="/favicon.png" />
         <title>Bike Shed</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <Component {...pageProps} />
     </Fragment>

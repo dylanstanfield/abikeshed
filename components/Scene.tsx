@@ -10,6 +10,8 @@ import { Roof } from './units/Roof'
 import { Interior } from './units/Interior'
 import { Woodpile } from './units/Woodpile'
 import { Lantern } from './units/Lantern'
+import { Barrels } from './units/Barrels'
+import { DoorAwning } from './units/DoorAwning'
 
 export default () => {
   const cam = useRef()
@@ -21,7 +23,7 @@ export default () => {
       <ambientLight />
       <spotLight
         color={ 'white' }
-        intensity={ 0.2 }
+        intensity={ 0.6 }
         position={ [5, 10, 10] }
         shadow-mapSize-width={ 2048 }
         shadow-mapSize-height={ 2048 }
@@ -33,6 +35,9 @@ export default () => {
         </Position>
         <Frame />
         <Walls />
+        <Position x={ 3.37 } y={ 2.2 } rotate={{ z: -15 }}>
+          <DoorAwning />
+        </Position>
         <Position y={ 3.25 } rotate={{ x: 15 }}>
           <Roof />
         </Position>
@@ -42,6 +47,9 @@ export default () => {
         </Position>
         <Position x={ -2 } y={ 0 } z={ -3.2 } rotate={{ y: 40 }}>
           <Lantern />
+        </Position>
+        <Position x={ -2 } y={ 0.1 } z={ 2.5 }>
+          <Barrels />
         </Position>
       </group>
     </Canvas>
